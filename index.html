@@ -1,0 +1,1245 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Path to €300K: The 2025 Freelancer&#39;s Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#64748b',
+                        accent: '#0ea5e9',
+                        neutral: '#f8fafc',
+                        'base-100': '#ffffff',
+                        'base-200': '#f1f5f9',
+                        'base-300': '#e2e8f0'
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+    <style>
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 2fr 1fr;
+                grid-template-rows: auto auto;
+            }
+            
+            .bento-main {
+                grid-row: 1 / 3;
+            }
+        }
+        
+        .floating-toc {
+            position: fixed;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            max-height: 70vh;
+            overflow-y: auto;
+            z-index: 50;
+        }
+        
+        @media (max-width: 1280px) {
+            .floating-toc {
+                display: none;
+            }
+        }
+        
+        .content-wrapper {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1280px;
+        }
+        
+        @media (min-width: 1280px) {
+            .content-wrapper {
+                margin-left: 20rem;
+            }
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(14, 165, 233, 0.8) 100%);
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+            margin: 4rem 0;
+        }
+        
+        .pullquote {
+            border-left: 4px solid #0ea5e9;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        
+        .citation-link {
+            color: #0ea5e9;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        
+        .citation-link:hover {
+            border-bottom-color: #0ea5e9;
+        }
+        
+        .data-highlight {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 1px solid #3b82f6;
+        }
+        
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        @media (max-width: 1024px) {
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        /* Responsive fixes for small screens */
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+            #hero p {
+                font-size: 1.1rem;
+            }
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .pullquote {
+                padding: 1.5rem;
+            }
+            .data-highlight {
+                padding: 1rem;
+            }
+            .mermaid-container {
+                padding: 15px;
+                margin: 15px 0;
+            }
+        }
+    </style>
+  </head>
+
+  <body class="bg-neutral text-gray-900 font-sans leading-relaxed">
+
+    <!-- Fixed Table of Contents -->
+    <nav class="floating-toc w-64 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg border border-base-300 p-6">
+      <h3 class="font-serif font-bold text-lg text-primary mb-4">Contents</h3>
+      <ul class="space-y-2 text-sm">
+        <li>
+          <a href="#hero" class="citation-link hover:text-accent transition-colors">Introduction</a>
+        </li>
+        <li>
+          <a href="#understanding" class="citation-link hover:text-accent transition-colors">Understanding the Challenge</a>
+        </li>
+        <li>
+          <a href="#high-value-niches" class="citation-link hover:text-accent transition-colors">High-Value Niches</a>
+        </li>
+        <li>
+          <a href="#maximizing-income" class="citation-link hover:text-accent transition-colors">Maximizing Income</a>
+        </li>
+        <li>
+          <a href="#entrepreneurial-avenues" class="citation-link hover:text-accent transition-colors">Entrepreneurial Avenues</a>
+        </li>
+        <li>
+          <a href="#skills-pathways" class="citation-link hover:text-accent transition-colors">Skills &amp; Learning</a>
+        </li>
+        <li>
+          <a href="#remote-legal" class="citation-link hover:text-accent transition-colors">Remote Work &amp; Legal</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content-wrapper px-4 sm:px-6 md:px-8 py-12">
+
+      <!-- Hero Section -->
+      <section id="hero" class="mb-16">
+        <div class="relative overflow-hidden rounded-2xl mb-12">
+          <div class="bento-grid">
+            <!-- Main Hero Content -->
+            <div class="bento-main relative">
+              <img src="https://kimi-web-img.moonshot.cn/img/tbeafrica.com/fd165db301bc7e9d96ef1db12df2ff9a2cd1a852.jpg" alt="Freelancer working remotely with laptop and economic charts" class="w-full h-96 object-cover rounded-xl" size="large" aspect="wide" style="photo" query="freelancer working remotely with laptop and economic charts" referrerpolicy="no-referrer" data-modified="1" data-score="11582.00"/>
+              <div class="absolute inset-0 hero-overlay rounded-xl flex items-center justify-center">
+                <div class="text-center text-white px-4 sm:px-6">
+                  <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold italic mb-4 leading-tight">
+                    The €300K <em class="text-accent">Freelance</em> Challenge
+                  </h1>
+                  <p class="text-base sm:text-lg md:text-xl lg:text-2xl font-light opacity-90 max-w-2xl mx-auto">
+                    A strategic guide for Computer Science &amp; Economics graduates targeting exceptional income in Germany&#39;s evolving market
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Insights Cards -->
+            <div class="space-y-4">
+              <div class="bg-white rounded-xl p-6 shadow-lg border border-base-300">
+                <div class="flex items-center mb-3">
+                  <i class="fas fa-chart-line text-accent text-xl mr-3"></i>
+                  <h3 class="font-semibold text-primary">Market Reality</h3>
+                </div>
+                <p class="text-sm text-secondary break-words">€300K target is exceptionally ambitious—standard freelance roles yield €130K-€160K annually</p>
+              </div>
+
+              <div class="bg-white rounded-xl p-6 shadow-lg border border-base-300">
+                <div class="flex items-center mb-3">
+                  <i class="fas fa-brain text-accent text-xl mr-3"></i>
+                  <h3 class="font-semibold text-primary">AI Opportunity</h3>
+                </div>
+                <p class="text-sm text-secondary break-words">AI consulting and strategy roles command 20-40% premiums over implementation work</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Summary -->
+        <div class="pullquote rounded-xl p-8 mb-8">
+          <blockquote class="text-lg sm:text-xl md:text-2xl font-light italic text-primary leading-relaxed">
+            &#34;Achieving €300,000 annually as a new freelancer in Germany by 2025, with skills in Computer Science &amp; Economics and no initial investment, is exceptionally ambitious. While high earnings are possible in specialized niches, reaching this specific income level immediately requires exceptional expertise, a unique value proposition, and strategic client targeting beyond traditional freelancing.&#34;
+          </blockquote>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 1: Understanding the Earning Potential -->
+      <section id="understanding" class="mb-16">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-8">Understanding the Earning Potential</h2>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div>
+            <h3 class="font-serif text-2xl font-semibold text-primary mb-4">The €300K Reality Check</h3>
+            <p class="text-secondary leading-relaxed mb-4">
+              The target of €300,000 annually represents a significant leap from standard freelance earnings in Germany. Even experienced specialists in high-demand fields like <a href="https://norman.finance/blog/freiberufler-wie-viel-verdienen" class="citation-link">Consulting &amp; Management or SAP earn €160,000-€170,000</a> gross annually, assuming 1,380 billable hours per year.
+            </p>
+
+            <div class="data-highlight rounded-lg p-6 mb-4">
+              <h4 class="font-semibold text-primary mb-2">Earning Scenarios Breakdown</h4>
+              <ul class="space-y-2 text-sm">
+                <li><strong>€100/hour:</strong> 3,000 billable hours needed (unsustainable)</li>
+                <li><strong>€217/hour:</strong> 1,380 billable hours needed (premium rate)</li>
+                <li><strong>Standard Range:</strong> €80-€142/hour for top fields</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <img src="https://kimi-web-img.moonshot.cn/img/placeholder-0620/%E5%9B%BE%E7%89%876.png" alt="Freelancer analyzing German tax documents" class="w-full h-64 object-cover rounded-xl" size="medium" aspect="wide" style="photo" query="freelancer German tax documents" referrerpolicy="no-referrer" data-modified="1" data-score="10000.00"/>
+          </div>
+        </div>
+
+        <!-- Freelance Rates Chart -->
+        <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300 mb-8">
+          <h3 class="font-serif text-2xl font-semibold text-primary mb-6">2025 German Freelance Market Rates</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-base-300">
+                  <th class="text-left py-3 font-semibold text-primary">Field</th>
+                  <th class="text-right py-3 font-semibold text-primary">Avg. Rate (€/hr)</th>
+                  <th class="text-right py-3 font-semibold text-primary">Range (€/hr)</th>
+                  <th class="text-right py-3 font-semibold text-primary">Annual Gross*</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-base-300">
+                <tr>
+                  <td class="py-3 font-medium">Consulting &amp; Management</td>
+                  <td class="py-3 text-right">€118</td>
+                  <td class="py-3 text-right">€95 – €142</td>
+                  <td class="py-3 text-right font-semibold text-accent">€162,800</td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-medium">SAP Specialists</td>
+                  <td class="py-3 text-right">€117</td>
+                  <td class="py-3 text-right">€94 – €140</td>
+                  <td class="py-3 text-right font-semibold text-accent">€161,500</td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-medium">Development / Tech / Data</td>
+                  <td class="py-3 text-right">€100</td>
+                  <td class="py-3 text-right">€80 – €120</td>
+                  <td class="py-3 text-right font-semibold text-accent">€138,000</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="text-xs text-secondary mt-4">*Based on 1,380 billable hours annually (30 hrs/week × 46 weeks)</p>
+          </div>
+        </div>
+
+        <div class="pullquote rounded-xl p-6">
+          <p class="text-secondary italic">
+            &#34;The LinkedIn posts by <a href="https://www.linkedin.com/posts/simonhoiberg_ive-made-300kyear-as-a-freelancer-activity-6947443202635264000-dqzd" class="citation-link">Simon Høiberg, who earned $300,000 annually</a>, highlight that such earnings require technical expertise, business acumen, marketing skills, and the ability to build a significant client base.&#34;
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 2: High-Value Niches -->
+      <section id="high-value-niches" class="mb-16">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-8">High-Value Freelance Niches</h2>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-robot text-accent text-2xl mr-4"></i>
+              <h3 class="font-serif text-2xl font-semibold text-primary">AI Consulting &amp; Strategy</h3>
+            </div>
+            <p class="text-secondary mb-4">
+              Combines technical AI expertise with business acumen to advise companies on AI opportunities, strategic roadmaps, and governance frameworks. <a href="https://www.getgenerative.ai/how-much-can-you-earn-ai-consultant/" class="citation-link">Senior AI consultants can command $300-500/hour</a>.
+            </p>
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-secondary">Premium over implementation</span>
+                <span class="font-semibold text-accent">20-40%</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-secondary">Generative AI consultants</span>
+                <span class="font-semibold text-accent">$150-300/hour</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-chart-line text-accent text-2xl mr-4"></i>
+              <h3 class="font-serif text-2xl font-semibold text-primary">FinTech &amp; Quantitative Finance</h3>
+            </div>
+            <p class="text-secondary mb-4">
+              Developing AI-driven financial models, algorithmic trading strategies, and risk management systems. Requires programming skills plus deep understanding of financial markets and economic principles.
+            </p>
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-secondary">Key skills</span>
+                <span class="font-semibold text-accent">Python, R, C++, ML</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-secondary">Applications</span>
+                <span class="font-semibold text-accent">Trading, Risk, RegTech</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-university text-accent text-2xl mr-4"></i>
+              <h3 class="font-serif text-2xl font-semibold text-primary">AI in Economic Policy</h3>
+            </div>
+            <p class="text-secondary mb-4">
+              Developing AI-driven models for policy impact analysis and economic forecasting. Serves governmental organizations, international bodies, and research institutions.
+            </p>
+            <div class="bg-base-200 rounded-lg p-4">
+              <p class="text-sm text-secondary italic">
+                &#34;The role of a <a href="https://www.arbeitnow.com/jobs/companies/toloka-ai/remote-freelance-economics-quality-assurance-ai-trainer-berlin-387797" class="citation-link">Freelance Economics - Quality Assurance/AI Trainer</a> indicates demand for economic expertise in training AI models.&#34;
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-magic text-accent text-2xl mr-4"></i>
+              <h3 class="font-serif text-2xl font-semibold text-primary">AI Prompt Engineering</h3>
+            </div>
+            <p class="text-secondary mb-4">
+              Specialized role crafting effective inputs for LLMs and generative AI systems. <a href="https://www.linkedin.com/pulse/how-become-prompt-engineer-2025-skills-career-guide-netcom-learning-qwp3c" class="citation-link">Salaries range €160K-€300K in Germany</a>.
+            </p>
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-secondary">Skills blend</span>
+                <span class="font-semibold text-accent">Technical + Creative</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-secondary">Applications</span>
+                <span class="font-semibold text-accent">Economic forecasting</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Income Potential Chart -->
+        <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300 mt-8">
+          <h3 class="font-serif text-2xl font-semibold text-primary mb-6 text-center">High-Value Niche Income Scenarios</h3>
+          <div class="mermaid-container">
+            <div class="mermaid-controls">
+              <button class="mermaid-control-btn zoom-in" title="放大">
+                <i class="fas fa-search-plus"></i>
+              </button>
+              <button class="mermaid-control-btn zoom-out" title="缩小">
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <button class="mermaid-control-btn reset-zoom" title="重置">
+                <i class="fas fa-expand-arrows-alt"></i>
+              </button>
+              <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+            <div class="mermaid" id="income-chart">
+              graph TD
+              A[&#34;€300K Target&#34;] --&gt; B[&#34;AI Consulting $300-500/hr&#34;]
+              A --&gt; C[&#34;Prompt Engineering €160-300K&#34;]
+              A --&gt; D[&#34;FinTech Solutions&#34;]
+              A --&gt; E[&#34;Economic Policy AI&#34;]
+
+              B --&gt; F[&#34;1,111 hours at $300/hr&#34;]
+              C --&gt; G[&#34;Specialized expertise&#34;]
+              D --&gt; H[&#34;Algorithmic trading&#34;]
+              E --&gt; I[&#34;Government contracts&#34;]
+
+              style A fill:#dbeafe,stroke:#1e40af,stroke-width:3px,color:#1e40af
+              style B fill:#f0f9ff,stroke:#0ea5e9,stroke-width:2px,color:#0c4a6e
+              style C fill:#f0f9ff,stroke:#0ea5e9,stroke-width:2px,color:#0c4a6e
+              style D fill:#f0f9ff,stroke:#0ea5e9,stroke-width:2px,color:#0c4a6e
+              style E fill:#f0f9ff,stroke:#0ea5e9,stroke-width:2px,color:#0c4a6e
+              style F fill:#ecfdf5,stroke:#10b981,stroke-width:2px,color:#064e3b
+              style G fill:#ecfdf5,stroke:#10b981,stroke-width:2px,color:#064e3b
+              style H fill:#ecfdf5,stroke:#10b981,stroke-width:2px,color:#064e3b
+              style I fill:#ecfdf5,stroke:#10b981,stroke-width:2px,color:#064e3b
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 3: Maximizing Income -->
+      <section id="maximizing-income" class="mb-16">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-8">Strategies to Maximize Income</h2>
+
+        <div class="space-y-8">
+          <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+            <h3 class="font-serif text-2xl font-semibold text-primary mb-4">Targeting High-Value Clients</h3>
+            <p class="text-secondary mb-6">
+              Move beyond standard market rates by positioning yourself as a strategic partner rather than a technical expert. <a href="https://www.theautonomousfreelancer.com/blog/autonomous-income" class="citation-link">Focus on value-based pricing and working with fewer, better clients</a>.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="text-center">
+                <i class="fas fa-building text-accent text-3xl mb-3"></i>
+                <h4 class="font-semibold text-primary mb-2">Enterprise Clients</h4>
+                <p class="text-sm text-secondary">Complex projects with substantial budgets</p>
+              </div>
+              <div class="text-center">
+                <i class="fas fa-rocket text-accent text-3xl mb-3"></i>
+                <h4 class="font-semibold text-primary mb-2">Funded Startups</h4>
+                <p class="text-sm text-secondary">Innovation-driven companies seeking expertise</p>
+              </div>
+              <div class="text-center">
+                <i class="fas fa-globe text-accent text-3xl mb-3"></i>
+                <h4 class="font-semibold text-primary mb-2">International Market</h4>
+                <p class="text-sm text-secondary">Access higher willingness to pay globally</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+              <h3 class="font-serif text-2xl font-semibold text-primary mb-4">Developing Niche Expertise</h3>
+              <p class="text-secondary mb-4">
+                Specialization allows premium rates due to unique domain understanding. <a href="https://norman.finance/blog/freiberufler-wie-viel-verdienen" class="citation-link">Targeting the 75th percentile can boost yearly income by €25K-€30K</a>.
+              </p>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i>AI-driven financial risk modeling</li>
+                <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i>Algorithmic trading strategy development</li>
+                <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i>Economic forecasting using ML</li>
+                <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i>AI ethics in FinTech</li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+              <h3 class="font-serif text-2xl font-semibold text-primary mb-4">Pricing Strategy Evolution</h3>
+              <div class="space-y-4">
+                <div class="border-l-4 border-red-400 pl-4">
+                  <h4 class="font-semibold text-red-600">Hourly Rates</h4>
+                  <p class="text-sm text-secondary">Limited earning potential, time-bound</p>
+                </div>
+                <div class="border-l-4 border-yellow-400 pl-4">
+                  <h4 class="font-semibold text-yellow-600">Project Fees</h4>
+                  <p class="text-sm text-secondary">Value-based, outcome-focused</p>
+                </div>
+                <div class="border-l-4 border-green-400 pl-4">
+                  <h4 class="font-semibold text-green-600">Retainers</h4>
+                  <p class="text-sm text-secondary">Predictable, recurring income</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 4: Entrepreneurial Avenues -->
+      <section id="entrepreneurial-avenues" class="mb-16">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-8">Beyond Traditional Freelancing</h2>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-cogs text-accent text-2xl mr-4"></i>
+              <h3 class="font-serif text-2xl font-semibold text-primary">AI-Powered Products &amp; SaaS</h3>
+            </div>
+            <p class="text-secondary mb-4">
+              Develop scalable assets that generate recurring revenue. <a href="https://www.linkedin.com/posts/simonhoiberg_when-i-was-freelancing-i-made-around-300k-activity-7221791725478891522-XWIa" class="citation-link">Simon Høiberg transitioned from freelancing to running a SaaS business</a>.
+            </p>
+            <div class="space-y-3">
+              <div class="bg-base-200 rounded-lg p-3">
+                <h4 class="font-semibold text-primary text-sm">AI-driven financial forecasting</h4>
+              </div>
+              <div class="bg-base-200 rounded-lg p-3">
+                <h4 class="font-semibold text-primary text-sm">Automated market analysis tools</h4>
+              </div>
+              <div class="bg-base-200 rounded-lg p-3">
+                <h4 class="font-semibold text-primary text-sm">Economic risk assessment platforms</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-users text-accent text-2xl mr-4"></i>
+              <h3 class="font-serif text-2xl font-semibold text-primary">Building Personal Brand</h3>
+            </div>
+            <p class="text-secondary mb-4">
+              Establish yourself as a thought leader. <a href="https://www.linkedin.com/posts/simonhoiberg_i-made-300kyear-as-a-freelance-consultant-activity-6970632000466522112-Izpt" class="citation-link">&#34;I built an audience&#34; was key to making over $300K annually</a>.
+            </p>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="text-center">
+                <i class="fas fa-pen-fancy text-accent text-xl mb-2"></i>
+                <p class="text-xs text-secondary">Content Creation</p>
+              </div>
+              <div class="text-center">
+                <i class="fas fa-video text-accent text-xl mb-2"></i>
+                <p class="text-xs text-secondary">Video Content</p>
+              </div>
+              <div class="text-center">
+                <i class="fas fa-chalkboard-teacher text-accent text-xl mb-2"></i>
+                <p class="text-xs text-secondary">Speaking</p>
+              </div>
+              <div class="text-center">
+                <i class="fas fa-book text-accent text-xl mb-2"></i>
+                <p class="text-xs text-secondary">Courses</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-8 border border-blue-200">
+          <h3 class="font-serif text-2xl font-semibold text-primary mb-4">Hybrid Income Strategy</h3>
+          <p class="text-secondary mb-6">
+            Combine active freelancing with passive income streams for optimal revenue diversification and stability.
+          </p>
+          <div class="grid md:grid-cols-4 gap-6">
+            <div class="text-center">
+              <i class="fas fa-laptop-code text-accent text-2xl mb-3"></i>
+              <h4 class="font-semibold text-primary mb-2">Active Freelancing</h4>
+              <p class="text-xs text-secondary">High-value client projects</p>
+            </div>
+            <div class="text-center">
+              <i class="fas fa-graduation-cap text-accent text-2xl mb-3"></i>
+              <h4 class="font-semibold text-primary mb-2">Online Courses</h4>
+              <p class="text-xs text-secondary">Teaching specialized skills</p>
+            </div>
+            <div class="text-center">
+              <i class="fas fa-book text-accent text-2xl mb-3"></i>
+              <h4 class="font-semibold text-primary mb-2">Digital Products</h4>
+              <p class="text-xs text-secondary">E-books, templates, tools</p>
+            </div>
+            <div class="text-center">
+              <i class="fas fa-chart-pie text-accent text-2xl mb-3"></i>
+              <h4 class="font-semibold text-primary mb-2">Investments</h4>
+              <p class="text-xs text-secondary">Reinvest earnings wisely</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 5: Skills and Learning Pathways -->
+      <section id="skills-pathways" class="mb-16">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-8">Key Skills and Learning Pathways</h2>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-8">
+          <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-brain text-accent text-2xl mr-4"></i>
+              <h3 class="font-serif text-xl font-semibold text-primary">Deepen AI/ML Expertise</h3>
+            </div>
+            <ul class="space-y-3 text-sm text-secondary">
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-accent mt-1 mr-2 text-xs"></i>
+                Advanced ML algorithms and architectures
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-accent mt-1 mr-2 text-xs"></i>
+                <a href="https://www.getgenerative.ai/how-much-can-you-earn-ai-consultant/" class="citation-link">Professional certifications</a>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-accent mt-1 mr-2 text-xs"></i>
+                MLOps and production deployment
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-accent mt-1 mr-2 text-xs"></i>
+                Generative AI applications
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-chart-line text-accent text-2xl mr-4"></i>
+              <h3 class="font-serif text-xl font-semibold text-primary">Business &amp; Marketing</h3>
+            </div>
+            <ul class="space-y-3 text-sm text-secondary">
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-accent mt-1 mr-2 text-xs"></i>
+                Value-based pricing strategies
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-accent mt-1 mr-2 text-xs"></i>
+                B2B sales and negotiation
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-accent mt-1 mr-2 text-xs"></i>
+                Personal branding and content marketing
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-accent mt-1 mr-2 text-xs"></i>
+                Client relationship management
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-briefcase text-accent text-2xl mr-4"></i>
+              <h3 class="font-serif text-xl font-semibold text-primary">Portfolio Building</h3>
+            </div>
+            <ul class="space-y-3 text-sm text-secondary">
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-accent mt-1 mr-2 text-xs"></i>
+                Real-world project experience
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-accent mt-1 mr-2 text-xs"></i>
+                Open source contributions
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-accent mt-1 mr-2 text-xs"></i>
+                Case studies with quantifiable results
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-accent mt-1 mr-2 text-xs"></i>
+                Online portfolio and testimonials
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pullquote rounded-xl p-8">
+          <blockquote class="text-lg italic text-primary">
+            &#34;Simon Høiberg emphasized that after learning to code, he <a href="https://www.linkedin.com/posts/simonhoiberg_i-made-300kyear-as-a-freelance-consultant-activity-6970632000466522112-Izpt" class="citation-link">&#39;topped up with business &amp; marketing&#39;</a>—highlighting that technical skills alone are insufficient for exceptional earnings.&#34;
+          </blockquote>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 6: Remote Work and Legal -->
+      <section id="remote-legal" class="mb-16">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-8">Remote Work and Legal Considerations</h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="space-y-6">
+            <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+              <h3 class="font-serif text-2xl font-semibold text-primary mb-4">German Freelance Regulations</h3>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <i class="fas fa-file-alt text-accent mt-1 mr-3"></i>
+                  <div>
+                    <h4 class="font-semibold text-primary">Registration</h4>
+                    <p class="text-sm text-secondary">Register with Finanzamt (tax office) as Freiberufler</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="fas fa-percent text-accent mt-1 mr-3"></i>
+                  <div>
+                    <h4 class="font-semibold text-primary">VAT (Umsatzsteuer)</h4>
+                    <p class="text-sm text-secondary">Mandatory for €300K target (above €22K threshold)</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="fas fa-calendar-alt text-accent mt-1 mr-3"></i>
+                  <div>
+                    <h4 class="font-semibold text-primary">Tax Payments</h4>
+                    <p class="text-sm text-secondary">Quarterly advance payments (Einkommensteuervorauszahlungen)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+              <h3 class="font-serif text-2xl font-semibold text-primary mb-4">International Client Considerations</h3>
+              <ul class="space-y-3 text-sm text-secondary">
+                <li class="flex items-start">
+                  <i class="fas fa-globe text-accent mt-1 mr-2 text-xs"></i>
+                  Income generally taxable in Germany if resident
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-handshake text-accent mt-1 mr-2 text-xs"></i>
+                  Double taxation agreements may apply
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-receipt text-accent mt-1 mr-2 text-xs"></i>
+                  B2B services outside EU: 0% VAT (with conditions)
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-euro-sign text-accent mt-1 mr-2 text-xs"></i>
+                  EU clients: reverse charge mechanism
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <img src="https://kimi-web-img.moonshot.cn/img/assets.wundertax.red/0de3396965b0329952d10c291ae343144873428f" alt="German tax forms and computer on home office desk" class="w-full h-64 object-cover rounded-xl" size="medium" aspect="wide" style="photo" query="German tax documents home office" referrerpolicy="no-referrer" data-modified="1" data-score="11494.00"/>
+
+            <div class="bg-white rounded-xl p-8 shadow-lg border border-base-300">
+              <h3 class="font-serif text-2xl font-semibold text-primary mb-4">No-Investment Startup</h3>
+              <p class="text-secondary mb-4">
+                Leverage time and laptop as primary resources. This lean approach requires strategic allocation of time for skill development, portfolio building, and client acquisition.
+              </p>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="bg-base-200 rounded-lg p-4 text-center">
+                  <i class="fas fa-laptop text-accent text-2xl mb-2"></i>
+                  <h4 class="font-semibold text-primary text-sm">Essential Tool</h4>
+                </div>
+                <div class="bg-base-200 rounded-lg p-4 text-center">
+                  <i class="fas fa-clock text-accent text-2xl mb-2"></i>
+                  <h4 class="font-semibold text-primary text-sm">Time Investment</h4>
+                </div>
+                <div class="bg-base-200 rounded-lg p-4 text-center">
+                  <i class="fas fa-brain text-accent text-2xl mb-2"></i>
+                  <h4 class="font-semibold text-primary text-sm">Intellectual Capital</h4>
+                </div>
+                <div class="bg-base-200 rounded-lg p-4 text-center">
+                  <i class="fas fa-seedling text-accent text-2xl mb-2"></i>
+                  <h4 class="font-semibold text-primary text-sm">Organic Growth</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="data-highlight rounded-xl p-8 mt-8">
+          <h3 class="font-serif text-2xl font-semibold text-primary mb-4">2025 German Tax Brackets (Single Person)</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-blue-300">
+                  <th class="text-left py-3 font-semibold">Taxable Income</th>
+                  <th class="text-right py-3 font-semibold">Marginal Rate</th>
+                  <th class="text-left py-3 font-semibold">Notes</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-blue-200">
+                <tr>
+                  <td class="py-3">€0 - €12,096</td>
+                  <td class="py-3 text-right">0%</td>
+                  <td class="py-3 text-sm text-secondary">Grundfreibetrag</td>
+                </tr>
+                <tr>
+                  <td class="py-3">€12,097 - €17,443</td>
+                  <td class="py-3 text-right">14% → 24%</td>
+                  <td class="py-3 text-sm text-secondary">Progressive curve</td>
+                </tr>
+                <tr>
+                  <td class="py-3">€17,444 - €68,481</td>
+                  <td class="py-3 text-right">24% → 42%</td>
+                  <td class="py-3 text-sm text-secondary">Linear-progressive</td>
+                </tr>
+                <tr>
+                  <td class="py-3">€68,482 - €277,825</td>
+                  <td class="py-3 text-right">42%</td>
+                  <td class="py-3 text-sm text-secondary">Flat rate</td>
+                </tr>
+                <tr>
+                  <td class="py-3">€277,826+</td>
+                  <td class="py-3 text-right">45%</td>
+                  <td class="py-3 text-sm text-secondary">&#34;Rich-tax&#34; band</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm text-secondary mt-4">
+            <a href="https://blog.xolo.io/steps-to-start-working-as-a-freelancer-in-germany" class="citation-link">Source: German tax regulations 2025</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Conclusion -->
+      <section class="mb-16">
+        <div class="bg-gradient-to-br from-primary to-accent rounded-2xl p-12 text-white">
+          <h2 class="font-serif text-3xl md:text-4xl font-bold mb-6">The Path Forward</h2>
+          <p class="text-xl leading-relaxed mb-8 opacity-90">
+            While the €300,000 annual target is exceptionally ambitious for new freelancers in Germany, it becomes more feasible through strategic specialization in high-value niches like AI consulting, combined with entrepreneurial thinking and value-based pricing approaches.
+          </p>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center">
+              <i class="fas fa-target text-3xl mb-4 opacity-80"></i>
+              <h3 class="font-semibold mb-2">Focus on Value</h3>
+              <p class="text-sm opacity-80">Deliver exceptional outcomes, not just hours</p>
+            </div>
+            <div class="text-center">
+              <i class="fas fa-network-wired text-3xl mb-4 opacity-80"></i>
+              <h3 class="font-semibold mb-2">Build Authority</h3>
+              <p class="text-sm opacity-80">Establish expertise and personal brand</p>
+            </div>
+            <div class="text-center">
+              <i class="fas fa-rocket text-3xl mb-4 opacity-80"></i>
+              <h3 class="font-semibold mb-2">Think Entrepreneurially</h3>
+              <p class="text-sm opacity-80">Create scalable assets beyond client work</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <script>
+        // Initialize Mermaid with enhanced configuration
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#ffffff',
+                primaryTextColor: '#1e40af',
+                primaryBorderColor: '#0ea5e9',
+                lineColor: '#0ea5e9',
+                secondaryColor: '#f0f9ff',
+                tertiaryColor: '#ecfdf5',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f0f9ff',
+                tertiaryBkg: '#ecfdf5',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '14px'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            securityLevel: 'loose'
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Initialize mermaid controls when DOM is ready
+        document.addEventListener('DOMContentLoaded', initializeMermaidControls);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight active section in TOC
+        const sections = document.querySelectorAll('section[id]');
+        const tocLinks = document.querySelectorAll('.floating-toc a');
+
+        function highlightActiveSection() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('text-accent', 'font-semibold');
+                link.classList.add('text-secondary');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('text-secondary');
+                    link.classList.add('text-accent', 'font-semibold');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightActiveSection);
+        highlightActiveSection(); // Initial call
+    </script>
+  
+
+</body></html>
